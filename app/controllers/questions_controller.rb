@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @question = Question.find(params[:user_id])
+    @question = Question.find(params[:id])
     @user = @question.user
     @responses = @question.responses
   end
