@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :questions
   has_many :responses
   has_many :votes
-  validates :name, :administrator, :privilege, presence: true
+  validates :name, presence: true
   validates_confirmation_of :password
   validates :email, :presence => true, :uniqueness => true
   before_save :encrypt_password
