@@ -1,24 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Response:</strong>
+  <strong>for question:</strong>
+  <%= @response.question_id %>
+</p>
+
+<p>
   <%= @response.response %>
 </p>
 
 <p>
-  <strong>Best:</strong>
-  <%= @response.best %>
+  <% if @response.best === true %>
+    <p>Best Response!</p>
+  <% end %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @response.user_id %>
+  by user: <%= @response.user %>
 </p>
 
-<p>
-  <strong>Question:</strong>
-  <%= @response.question_id %>
-</p>
+
 
 <%= link_to 'Edit', edit_response_path(@response) %> |
 <%= link_to 'Back', responses_path %>

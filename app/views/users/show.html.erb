@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @user.name %>
-</p>
+</h1>
 
 <p>
   <strong>Email:</strong>
@@ -11,23 +10,18 @@
 </p>
 
 <p>
-  <strong>Password hash:</strong>
-  <%= @user.password_hash %>
+  <% if @user.admin === true %>
+    <p>Admin</p>
+  <% end %>
 </p>
 
 <p>
-  <strong>Password salt:</strong>
-  <%= @user.password_salt %>
-</p>
-
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
-
-<p>
-  <strong>Privilege:</strong>
-  <%= @user.privilege %>
+  <strong>Account status:</strong>
+  <% if @user.privilege === true %>
+    <p>Normal</p>
+    <%else%>
+    <p>Locked: see administrator for help</p>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

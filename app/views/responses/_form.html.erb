@@ -1,3 +1,5 @@
+<%= render "layouts/errors", :object => @response %>
+
 <%= form_with(model: response, local: true) do |form| %>
   <% if response.errors.any? %>
     <div id="error_explanation">
