@@ -10,6 +10,9 @@ class ResponsesController < ApplicationController
   # GET /responses/1
   # GET /responses/1.json
   def show
+    @response = Response.find(params[:question_id])
+    @user = @response.user
+    @question = @response.question
   end
 
   # GET /responses/new
@@ -19,6 +22,7 @@ class ResponsesController < ApplicationController
 
   # GET /responses/1/edit
   def edit
+    @response = Response.find(params[:user_id])
   end
 
   # POST /responses
