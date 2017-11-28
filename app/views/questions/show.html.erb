@@ -8,11 +8,47 @@
   <%= @question.question %>
 </h4>
 
-
-
 <p>
   by user: <%= @question.user.name %>
 </p>
 
+<% if @question.responses.any? %>
+  <h4>Here are the responses to <%= @question.user.name %>'s question:</h4>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="row">Response</th>
+        <th>User</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+      <% @question.responses.each do |response| %>
+      <tbody>
+        <tr>
+          <td>
+            <%= response.response %>
+          </td>
+          <td>
+            <%= response.user.name %>
+          </td>
+          <td>
+            <%= link_to "Edit", edit_question_response_path(@question, response) %>
+          </td>
+          <td>
+            <%= link_to "Delete", question_response_path(@question, response),
+            :data => {:confirm => "Are you sure?",
+              :method => "delete"} %>
+            <% end %>
+          </td>
+            <% else %>
+            <p>There are no responses yet!</p>
+          <% end %>
+        </tr>
+      </tbody>
+  </table>
+
+<%= link_to "Respond", new_question_response_path(@question) %> |
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
