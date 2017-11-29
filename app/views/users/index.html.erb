@@ -1,12 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Users</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="row">Name</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
   <% @users.each do |user| %>
-    <p><%= user.name %></p>
-    <p><%= link_to 'Show', user %></p>
-    <p><%= link_to 'Edit', edit_user_path(user) %></p>
-    <p><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <tbody>
+      <tr>
+        <td scope="row"><%= link_to user.name, user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    </tbody>
   <% end %>
+</table>
+
 <br>
 
 <%= link_to 'New User', new_user_path %>
